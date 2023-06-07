@@ -1,100 +1,100 @@
-DROP DATABASE IF EXISTS human_friends;
+DROP DATABASE IF EXISTS Human_friends;
 
-CREATE DATABASE human_friends;
-USE human_friends;
+CREATE DATABASE Human_friends;
+USE Human_friends;
 
-CREATE TABLE animals
+CREATE TABLE animal
 (
 	Id INT AUTO_INCREMENT PRIMARY KEY,
 	Class_name VARCHAR(20)
 );
 
-INSERT INTO animals (Class_name)
+INSERT INTO animal (Class_name)
 VALUES ('вьючные'),
 ('домашние');
 
-CREATE TABLE pack_animals
+CREATE TABLE packed_animal
 (
 	Id INT AUTO_INCREMENT PRIMARY KEY,
     Genus_name VARCHAR (20),
     Class_id INT,
-    FOREIGN KEY (Class_id) REFERENCES animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (Class_id) REFERENCES animal (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-INSERT INTO pack_animals (Genus_name, Class_id)
+INSERT INTO packed_animal (Genus_name, Class_id)
 VALUES ('Лошади', 1),
 ('Ослы', 1),
 ('Верблюды', 1); 
 
-CREATE TABLE home_animals
+CREATE TABLE home_animal
 (
 	Id INT AUTO_INCREMENT PRIMARY KEY,
     Genus_name VARCHAR (20),
     Class_id INT,
-    FOREIGN KEY (Class_id) REFERENCES animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (Class_id) REFERENCES animal (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-INSERT INTO home_animals (Genus_name, Class_id)
+INSERT INTO home_animal (Genus_name, Class_id)
 VALUES ('Кошки', 2),
 ('Собаки', 2),
 ('Хомяки', 2); 
 
-CREATE TABLE cats
+CREATE TABLE cat
 (
     Id INT AUTO_INCREMENT PRIMARY KEY, 
     Name VARCHAR(20), 
     Birthday DATE,
     Commands VARCHAR(50),
     Genus_id int,
-    Foreign KEY (Genus_id) REFERENCES home_animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
+    Foreign KEY (Genus_id) REFERENCES home_animal (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE dogs
+CREATE TABLE dog
 (
     Id INT AUTO_INCREMENT PRIMARY KEY, 
     Name VARCHAR(20), 
     Birthday DATE,
     Commands VARCHAR(50),
     Genus_id int,
-    Foreign KEY (Genus_id) REFERENCES home_animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
+    Foreign KEY (Genus_id) REFERENCES home_animal (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE hamsters
+CREATE TABLE hamster
 (
     Id INT AUTO_INCREMENT PRIMARY KEY, 
     Name VARCHAR(20), 
     Birthday DATE,
     Commands VARCHAR(50),
     Genus_id int,
-    Foreign KEY (Genus_id) REFERENCES home_animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
+    Foreign KEY (Genus_id) REFERENCES home_animal (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE horses
+CREATE TABLE horse
 (
     Id INT AUTO_INCREMENT PRIMARY KEY, 
     Name VARCHAR(20), 
     Birthday DATE,
     Commands VARCHAR(50),
     Genus_id int,
-    Foreign KEY (Genus_id) REFERENCES pack_animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
+    Foreign KEY (Genus_id) REFERENCES packed_animal (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE camels
+CREATE TABLE camel 
 (
     Id INT AUTO_INCREMENT PRIMARY KEY, 
     Name VARCHAR(20), 
     Birthday DATE,
     Commands VARCHAR(50),
     Genus_id int,
-    Foreign KEY (Genus_id) REFERENCES pack_animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
+    Foreign KEY (Genus_id) REFERENCES packed_animal (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE donkeys
+CREATE TABLE donkey 
 (
     Id INT AUTO_INCREMENT PRIMARY KEY, 
     Name VARCHAR(20), 
     Birthday DATE,
     Commands VARCHAR(50),
     Genus_id int,
-    Foreign KEY (Genus_id) REFERENCES pack_animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
+    Foreign KEY (Genus_id) REFERENCES packed_animal (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
